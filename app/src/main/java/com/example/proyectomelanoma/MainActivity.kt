@@ -2,63 +2,94 @@ package com.example.proyectomelanoma
 
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.text.isDigitsOnly
 import com.android.volley.*
 import com.android.volley.toolbox.BasicNetwork
 import com.android.volley.toolbox.DiskBasedCache
 import com.android.volley.toolbox.HurlStack
 import com.android.volley.toolbox.JsonObjectRequest
 import com.google.android.material.button.MaterialButton
-import org.json.JSONArray
-import org.json.JSONException
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import org.json.JSONObject
 
 
 class MainActivity : AppCompatActivity() {
+    private var requestQueue:RequestQueue = RequestQueue(null, null)
+
     override fun onCreate(savedInstanceState: Bundle?) {
-        var x:String =""
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val requestQueue: RequestQueue
-        val cache: Cache = DiskBasedCache(cacheDir, 1024 * 1024) // 1MB cap
-        val network: Network = BasicNetwork(HurlStack())
-        requestQueue = RequestQueue(cache, network)
-        requestQueue.start()
-        val url = "https://melanomaitcr.pythonanywhere.com/api/inicio-sesion"
+        this.requestQueue = RequestQueue(DiskBasedCache(cacheDir, 1024 * 1024), BasicNetwork(HurlStack()))
+        this.requestQueue.start()
+
+        val entradaCodigo:TextInputEditText = findViewById(R.id.codigoCita)
+        val cajaCodigo:TextInputLayout = findViewById(R.id.cajaCita)
         val botonIngreso:MaterialButton = findViewById(R.id.botonIngreso)
-        val data = JSONObject("{'cedula':'101110111','contrasenna':'melanoma2021'}");
+        val entradaCedula:TextInputEditText = findViewById(R.id.numeroCedula)
+        val cajaCedula:TextInputLayout = findViewById(R.id.cajaCedula)
 
-        println(data);
-        botonIngreso.setOnClickListener( View.OnClickListener{
-            val jsonObjectRequest = JsonObjectRequest(
-                Request.Method.POST, url, data, { response ->
-                    x= response["auth_token"] as String
-                    println(response["auth_token"])
-                }, { error-> print(error)
-                })
-            requestQueue.add(jsonObjectRequest)
-        })
-
-        val botonX:MaterialButton = findViewById(R.id.b)
-        botonX.setOnClickListener( View.OnClickListener {
-            println(x)
-            val url = "https://melanomaitcr.pythonanywhere.com/api/usuario"
-            val jsonObjectRequest2 = object : JsonObjectRequest(
-                Method.GET, url, null, { response ->
-                    println(response)
-                }, null
-            ) {
-                override fun getHeaders(): Map<String, String> {
-                    val headers = HashMap<String, String>()
-                    headers.put("auth-token",x)
-                    return headers
+        entradaCodigo.addTextChangedListener(object : TextWatcher {
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                if (entradaCodigo.text.toString().isEmpty()) {
+                    cajaCodigo.error = "Debe ingresar un código de cita"
+                    botonIngreso.isEnabled = false
+                } else {
+                    cajaCodigo.error = null
+                    if (entradaCedula.text.toString().isNotEmpty()) botonIngreso.isEnabled = true
                 }
             }
-            requestQueue.add(jsonObjectRequest2)
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun afterTextChanged(s: Editable) {}
         })
 
+        entradaCodigo.setOnFocusChangeListener { v, hasFocus ->
+            if (hasFocus) {
+            } else {
+                if (entradaCodigo.text.toString().isEmpty()) {
+                    cajaCodigo.error = "Debe ingresar un código de cita"
+                    botonIngreso.isEnabled = false
+                }
+            }
+        }
+
+        entradaCedula.addTextChangedListener(object : TextWatcher {
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                if (entradaCedula.text.toString().isEmpty()) {
+                    cajaCedula.error = "Debe ingresar un número de cédula"
+                    botonIngreso.isEnabled = false
+                }else if (! entradaCedula.text.toString().isDigitsOnly()){
+                    cajaCedula.error = "La cédula debe contener únicamente números"
+                    botonIngreso.isEnabled = false
+                }
+                else {
+                    cajaCedula.error = null
+                    if (entradaCedula.text.toString().isNotEmpty()) botonIngreso.isEnabled = true
+                }
+            }
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun afterTextChanged(s: Editable) {}
+        })
+
+        entradaCedula.setOnFocusChangeListener { v, hasFocus ->
+            if (hasFocus) {
+            } else {
+                if (entradaCedula.text.toString().isEmpty()) {
+                    cajaCedula.error = "Debe ingresar un número de cédula"
+                    botonIngreso.isEnabled = false
+                }
+            }
+        }
+
+        botonIngreso.setOnClickListener {
+            this.revisarIngresoCita()
+        }
         /**
          * val url = "https://melanomaitcr.pythonanywhere.com/api/usuario"
          * botonIngreso.setOnClickListener(View.OnClickListener {
@@ -104,7 +135,53 @@ class MainActivity : AppCompatActivity() {
         })**/
 
     }
+    fun revisarIngresoCita(){
+        val url = "https://melanomaitcr.pythonanywhere.com/api/ingreso-cita"
+        val entradaCedula:TextInputEditText = findViewById(R.id.numeroCedula)
+        val cedula:String = entradaCedula.text.toString()
+        val entradaCodigo:TextInputEditText = findViewById(R.id.codigoCita)
+        val codigo = entradaCodigo.text.toString()
+        val datos = "{'cedula':'$cedula','clave':'$codigo'}"
+        println(datos)
+        val data = JSONObject(datos)
+        println(data["cedula"])
+        val jsonObjectRequest = JsonObjectRequest(
+                Request.Method.POST, url, data,
+                { response ->
+                    //x= response["auth_token"] as String
+                    println(response["auth_token"])
+                },
+                { error ->
+                    var x = MaterialAlertDialogBuilder(this)
+                    .setTitle("Los datos ingresados son incorrectos")
+                    .setMessage("Por favor verifique los datos que fueron ingresados e intentelo nuevamente")
+                    .setNeutralButton("Entendido") { dialog, which ->
 
+                }.show()
+
+        })
+        requestQueue.add(jsonObjectRequest)
+    }
+    public fun X(){
+
+        val botonX:MaterialButton = findViewById(R.id.botonIngreso)
+        botonX.setOnClickListener {
+            //println(x)
+            val url = "https://melanomaitcr.pythonanywhere.com/api/usuario"
+            val jsonObjectRequest2 = object : JsonObjectRequest(
+                    Method.GET, url, null, { response ->
+                println(response)
+            }, null
+            ) {
+                override fun getHeaders(): Map<String, String> {
+                    val headers = HashMap<String, String>()
+                    //headers.put("auth-token",x)
+                    return headers
+                }
+            }
+            //requestQueue.add(jsonObjectRequest2)
+        }
+    }
 
 
 
