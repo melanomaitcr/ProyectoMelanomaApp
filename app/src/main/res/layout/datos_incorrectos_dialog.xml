@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatTextView
+
+        android:layout_width="271dp"
+        android:layout_height="101dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        android:scaleType="center"
+        android:text="Datos ingresados son incorrectos"
+        android:textAlignment="center"
+        android:textSize="30dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+
+        android:layout_width="267dp"
+        android:layout_height="106dp"
+        android:layout_marginLeft="23dp"
+        android:gravity="center_horizontal"
+        android:scaleType="center"
+        android:text="El número de cédula o código de cita ingresados no están asociados a una cita, por favor compruebe los datos e inténtelo nuevamente"
+        android:textAlignment="center"
+        android:textSize="16dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/entendido"
+        android:layout_width="121dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginBottom="20dp"
+        android:text="Entendido"
+        android:textAllCaps="false"
+        android:textSize="15dp"
+
+        app:cornerRadius="20dp" />
+
+</LinearLayout>

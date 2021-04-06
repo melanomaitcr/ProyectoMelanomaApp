@@ -1,9 +1,12 @@
 package com.example.proyectomelanoma
 
 
+import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.isDigitsOnly
@@ -17,6 +20,8 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import org.json.JSONObject
+import java.util.*
+import kotlin.collections.HashMap
 
 
 class MainActivity : AppCompatActivity() {
@@ -45,6 +50,7 @@ class MainActivity : AppCompatActivity() {
                     if (entradaCedula.text.toString().isNotEmpty()) botonIngreso.isEnabled = true
                 }
             }
+
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun afterTextChanged(s: Editable) {}
         })
@@ -64,15 +70,15 @@ class MainActivity : AppCompatActivity() {
                 if (entradaCedula.text.toString().isEmpty()) {
                     cajaCedula.error = "Debe ingresar un número de cédula"
                     botonIngreso.isEnabled = false
-                }else if (! entradaCedula.text.toString().isDigitsOnly()){
+                } else if (!entradaCedula.text.toString().isDigitsOnly()) {
                     cajaCedula.error = "La cédula debe contener únicamente números"
                     botonIngreso.isEnabled = false
-                }
-                else {
+                } else {
                     cajaCedula.error = null
                     if (entradaCedula.text.toString().isNotEmpty()) botonIngreso.isEnabled = true
                 }
             }
+
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun afterTextChanged(s: Editable) {}
         })
@@ -135,6 +141,7 @@ class MainActivity : AppCompatActivity() {
         })**/
 
     }
+
     fun revisarIngresoCita(){
         val url = "https://melanomaitcr.pythonanywhere.com/api/ingreso-cita"
         val entradaCedula:TextInputEditText = findViewById(R.id.numeroCedula)
@@ -149,17 +156,34 @@ class MainActivity : AppCompatActivity() {
                 Request.Method.POST, url, data,
                 { response ->
                     //x= response["auth_token"] as String
-                    println(response["auth_token"])
+                    println(response)
+                    val intent = Intent(this@MainActivity, CitaPaciente::class.java).apply {
+                        putExtra("auth_token", response["auth_token"] as String)
+                        putExtra("id_cita", response["id_cita"] as String)
+                        putExtra("cedula", cedula)
+                    }
+                    startActivity(intent)
                 },
                 { error ->
-                    var x = MaterialAlertDialogBuilder(this)
-                    .setTitle("Los datos ingresados son incorrectos")
-                    .setMessage("Por favor verifique los datos que fueron ingresados e intentelo nuevamente")
-                    .setNeutralButton("Entendido") { dialog, which ->
 
-                }.show()
+                    val layoutInflater = LayoutInflater.from(this)
+                    val promptView: View = layoutInflater.inflate(R.layout.datos_incorrectos_dialog, null)
 
-        })
+                    val alertD = AlertDialog.Builder(this).create()
+
+
+
+                    var botonEntedido: MaterialButton = promptView.findViewById(R.id.entendido)
+                    botonEntedido.setOnClickListener {
+                        alertD.dismiss()
+                    }
+                    alertD.setView(promptView);
+
+                    alertD.show();
+
+
+
+                })
         requestQueue.add(jsonObjectRequest)
     }
     public fun X(){
@@ -182,7 +206,6 @@ class MainActivity : AppCompatActivity() {
             //requestQueue.add(jsonObjectRequest2)
         }
     }
-
 
 
 }
