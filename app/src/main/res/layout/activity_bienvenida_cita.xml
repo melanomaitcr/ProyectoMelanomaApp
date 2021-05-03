@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BienvenidaCita">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="271dp"
+        android:layout_height="77dp"
+        android:gravity="center_horizontal"
+        android:text="Bienvenido al Sistema Praesidia"
+        android:textAlignment="center"
+        android:textSize="80px"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.313" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="272dp"
+        android:layout_height="126dp"
+        android:gravity="center_horizontal"
+        android:text="¡Bienvenido! Para empezar te realizaremos unas preguntas básicas de registro para tu cita"
+        android:textAlignment="center"
+        android:textSize="50px"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.519" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/botonBienvenida"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="280dp"
+        android:layout_height="59dp"
+
+        android:text="Aceptar"
+        app:backgroundTint="#AAAAAA"
+        android:textAllCaps="false"
+
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.897"
+        tools:context=".MainActivity" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

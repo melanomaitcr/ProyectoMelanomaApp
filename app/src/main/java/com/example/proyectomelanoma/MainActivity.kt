@@ -3,11 +3,14 @@ package com.example.proyectomelanoma
 
 import android.app.AlertDialog
 import android.content.Intent
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.isDigitsOnly
 import com.android.volley.*
@@ -16,17 +19,28 @@ import com.android.volley.toolbox.DiskBasedCache
 import com.android.volley.toolbox.HurlStack
 import com.android.volley.toolbox.JsonObjectRequest
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import org.json.JSONObject
+import java.text.ParseException
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.HashMap
 
 
+var cedulaP = ""
+var auth_token = ""
+var id_cita = ""
+var expediente = Expediente()
+var historialPersonalCita = HistorialPersonalCita()
+var historialFamiliarCita = HistorialFamiliarCita()
+var familiarOtroCancerLista = mutableListOf<FamiliarOtroCancer>()
+var archivoCitaLista = mutableListOf<ArchivoCita>()
+
 class MainActivity : AppCompatActivity() {
     private var requestQueue:RequestQueue = RequestQueue(null, null)
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -34,20 +48,25 @@ class MainActivity : AppCompatActivity() {
         this.requestQueue = RequestQueue(DiskBasedCache(cacheDir, 1024 * 1024), BasicNetwork(HurlStack()))
         this.requestQueue.start()
 
+
         val entradaCodigo:TextInputEditText = findViewById(R.id.codigoCita)
         val cajaCodigo:TextInputLayout = findViewById(R.id.cajaCita)
         val botonIngreso:MaterialButton = findViewById(R.id.botonIngreso)
         val entradaCedula:TextInputEditText = findViewById(R.id.numeroCedula)
         val cajaCedula:TextInputLayout = findViewById(R.id.cajaCedula)
-
         entradaCodigo.addTextChangedListener(object : TextWatcher {
+            @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 if (entradaCodigo.text.toString().isEmpty()) {
                     cajaCodigo.error = "Debe ingresar un código de cita"
                     botonIngreso.isEnabled = false
+                    botonIngreso.background.setTint(Color.parseColor("#DEDEDE"))
                 } else {
                     cajaCodigo.error = null
-                    if (entradaCedula.text.toString().isNotEmpty()) botonIngreso.isEnabled = true
+                    if (entradaCedula.text.toString().isNotEmpty()) {
+                        botonIngreso.isEnabled = true
+                        botonIngreso.background.setTint(Color.parseColor("#AAAAAA"))
+                    }
                 }
             }
 
@@ -61,21 +80,29 @@ class MainActivity : AppCompatActivity() {
                 if (entradaCodigo.text.toString().isEmpty()) {
                     cajaCodigo.error = "Debe ingresar un código de cita"
                     botonIngreso.isEnabled = false
+                    botonIngreso.background.setTint(Color.parseColor("#DEDEDE"))
                 }
             }
         }
 
         entradaCedula.addTextChangedListener(object : TextWatcher {
+            @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 if (entradaCedula.text.toString().isEmpty()) {
                     cajaCedula.error = "Debe ingresar un número de cédula"
                     botonIngreso.isEnabled = false
+                    botonIngreso.background.setTint(Color.parseColor("#DEDEDE"))
                 } else if (!entradaCedula.text.toString().isDigitsOnly()) {
                     cajaCedula.error = "La cédula debe contener únicamente números"
                     botonIngreso.isEnabled = false
+                    botonIngreso.background.setTint(Color.parseColor("#DEDEDE"))
+
                 } else {
                     cajaCedula.error = null
-                    if (entradaCedula.text.toString().isNotEmpty()) botonIngreso.isEnabled = true
+                    if (entradaCedula.text.toString().isNotEmpty()) {
+                        botonIngreso.isEnabled = true
+                        botonIngreso.background.setTint(Color.parseColor("#AAAAAA"))
+                    }
                 }
             }
 
@@ -89,6 +116,7 @@ class MainActivity : AppCompatActivity() {
                 if (entradaCedula.text.toString().isEmpty()) {
                     cajaCedula.error = "Debe ingresar un número de cédula"
                     botonIngreso.isEnabled = false
+                    botonIngreso.background.setTint(Color.parseColor("#DEDEDE"))
                 }
             }
         }
@@ -149,40 +177,51 @@ class MainActivity : AppCompatActivity() {
         val entradaCodigo:TextInputEditText = findViewById(R.id.codigoCita)
         val codigo = entradaCodigo.text.toString()
         val datos = "{'cedula':'$cedula','clave':'$codigo'}"
-        println(datos)
         val data = JSONObject(datos)
-        println(data["cedula"])
+        val datosPersonalesRequest = object: JsonObjectRequest(
+            Request.Method.GET, "https://melanomaitcr.pythonanywhere.com/api/expediente/$cedula", null,
+            {   response ->
+                expediente.numeroCedula = response["cedula"] as String
+                expediente.nombreCompleto = response["nombre"] as String +" "+ response["primer_apellido"] as String +" "+ response["segundo_apellido"] as String
+                expediente.correoElectronico = response["correo_electronico"] as String
+                expediente.fechaNacimiento = formatDateFromDateString("EEE, d MMM yyyy HH:mm:ss Z", "dd/MM/yyyy",response["fecha_nacimiento"] as String)
+                expediente.nacionalidad = response["nacionalidad"] as String
+                expediente.provincia = response["domicilio_provincia"] as String
+                expediente.canton = response["domicilio_canton"] as String
+                expediente.distrito = response["domicilio_distrito"] as String
+                expediente.numeroTelefono = response["numero_telefono"] as Int
+                expediente.identidadEtnica = response["identidad_etnica"] as String
+                val intent = Intent(this@MainActivity, BienvenidaCita::class.java)
+                startActivity(intent)
+            }, {error->
+        println(error)}) {
+            override fun getHeaders(): Map<String, String> {
+                val headers = HashMap<String, String>()
+                headers["auth-token"] = auth_token
+                return headers
+            }
+        }
         val jsonObjectRequest = JsonObjectRequest(
                 Request.Method.POST, url, data,
                 { response ->
-                    //x= response["auth_token"] as String
-                    println(response)
-                    val intent = Intent(this@MainActivity, CitaPaciente::class.java).apply {
-                        putExtra("auth_token", response["auth_token"] as String)
-                        putExtra("id_cita", response["id_cita"] as String)
-                        putExtra("cedula", cedula)
-                    }
-                    startActivity(intent)
+                    id_cita = response["id_cita"] as String
+                    auth_token = response["auth_token"] as String
+                    cedulaP = cedula
+                    println("hola")
+                    requestQueue.add(datosPersonalesRequest)
+
                 },
                 { error ->
-
+                    println("quePutas")
                     val layoutInflater = LayoutInflater.from(this)
                     val promptView: View = layoutInflater.inflate(R.layout.datos_incorrectos_dialog, null)
-
                     val alertD = AlertDialog.Builder(this).create()
-
-
-
                     var botonEntedido: MaterialButton = promptView.findViewById(R.id.entendido)
                     botonEntedido.setOnClickListener {
                         alertD.dismiss()
                     }
                     alertD.setView(promptView);
-
                     alertD.show();
-
-
-
                 })
         requestQueue.add(jsonObjectRequest)
     }
@@ -208,4 +247,17 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+}
+@Throws(ParseException::class)
+fun formatDateFromDateString(inputDateFormat: String?, outputDateFormat: String?,
+                             inputDate: String?): String {
+    val mParsedDate: Date
+    val mOutputDateString: String
+    val mInputDateFormat = SimpleDateFormat(inputDateFormat, Locale.getDefault())
+    val mOutputDateFormat = SimpleDateFormat(outputDateFormat, Locale.getDefault())
+    mOutputDateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
+    mParsedDate = mInputDateFormat.parse(inputDate)
+    mOutputDateString = mOutputDateFormat.format(mParsedDate)
+
+    return mOutputDateString
 }

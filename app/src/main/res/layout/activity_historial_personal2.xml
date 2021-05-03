@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HistorialPersonal2">
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/barraProgreso1"
+        android:layout_width="323sp"
+        android:layout_height="88sp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:progress="50"
+        app:indicatorColor="#AAAAAA"
+        android:scaleY="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.16"
+        app:trackCornerRadius="50dp"/>
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="411dp"
+        android:layout_height="53dp"
+        android:textColor="#4F4E4E"
+        android:gravity="center_horizontal"
+        android:text="Historial Personal"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="260dp"
+        android:layout_height="20dp"
+        android:gravity="center_horizontal"
+        android:text="¿Fuma o ha fumado?"
+        android:textAlignment="textStart"
+        android:textColor="#AAAAAA"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.284"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.274"
+        tools:ignore="RtlCompat" />
+
+    <RadioGroup
+        android:id="@+id/haFumadoRadioGroup"
+        android:layout_width="280dp"
+        android:layout_height="51dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.328"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.327">
+
+        <RadioButton
+            android:id="@+id/siHaFumado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:onClick="onRadioButtonHaFumadoClicked"
+            android:text="Sí" />
+
+        <RadioButton
+
+            android:id="@+id/noHaFumado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonHaFumadoClicked"
+            android:text="No" />
+    </RadioGroup>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edadFumarCaja"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="323dp"
+        android:layout_height="104sp"
+        android:focusable="false"
+        android:hint="¿A qué edad empezó a fumar?"
+        app:boxCornerRadiusBottomEnd="20dp"
+        app:boxCornerRadiusBottomStart="20dp"
+        app:boxCornerRadiusTopEnd="20dp"
+        app:boxCornerRadiusTopStart="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.457"
+        app:suffixText="años">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edadFumarText"
+            android:layout_width="match_parent"
+            android:layout_height="55sp"
+            android:inputType="number"
+            android:maxLines="1"
+            android:textSize="15sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/fumaActualmenteTitulo"
+        android:layout_width="259dp"
+        android:layout_height="36dp"
+        android:gravity="center_horizontal"
+        android:text="¿Fuma actualmente?"
+        android:textAlignment="textStart"
+        android:textColor="#AAAAAA"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.282"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.562"
+        tools:ignore="RtlCompat" />
+
+    <RadioGroup
+        android:id="@+id/fumaActualmenteRadioGroup"
+        android:layout_width="280dp"
+        android:layout_height="51dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.328"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.604">
+
+        <RadioButton
+            android:id="@+id/siFumaActualmente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:onClick="onRadioButtonFumaActualmenteClicked"
+            android:text="Sí" />
+
+        <RadioButton
+
+            android:id="@+id/noFumaActualmente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonFumaActualmenteClicked"
+            android:text="No" />
+    </RadioGroup>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/mesesFumandoCaja"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="323dp"
+        android:layout_height="104sp"
+
+        android:focusable="false"
+        android:hint="¿Hace cuánto fuma o por cuánto tiempo fumó? "
+        app:boxCornerRadiusBottomEnd="20dp"
+        app:boxCornerRadiusBottomStart="20dp"
+        app:boxCornerRadiusTopEnd="20dp"
+        app:boxCornerRadiusTopStart="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.757"
+        app:suffixText="meses">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/mesesFumandoText"
+            android:layout_width="match_parent"
+            android:layout_height="55sp"
+            android:inputType="number"
+            android:maxLines="1"
+            android:textSize="15sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/botonAnteriorHP2"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="140dp"
+        android:layout_height="59dp"
+        android:text="Anterior"
+        android:textAllCaps="false"
+        app:backgroundTint="#AAAAAA"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.162"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976"
+        tools:context=".MainActivity" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/botonSiguienteHP2"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="140dp"
+        android:layout_height="59dp"
+        android:text="Siguiente"
+        android:textAllCaps="false"
+        app:backgroundTint="#AAAAAA"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.837"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976"
+        tools:context=".MainActivity" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

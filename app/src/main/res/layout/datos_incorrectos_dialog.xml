@@ -15,7 +15,8 @@
         android:scaleType="center"
         android:text="Datos ingresados son incorrectos"
         android:textAlignment="center"
-        android:textSize="30dp" />
+        android:textSize="30sp"
+        android:layout_marginStart="25dp" />
 
     <androidx.appcompat.widget.AppCompatTextView
 
@@ -26,7 +27,8 @@
         android:scaleType="center"
         android:text="El número de cédula o código de cita ingresados no están asociados a una cita, por favor compruebe los datos e inténtelo nuevamente"
         android:textAlignment="center"
-        android:textSize="16dp" />
+        android:textSize="16sp"
+        android:layout_marginStart="23dp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/entendido"

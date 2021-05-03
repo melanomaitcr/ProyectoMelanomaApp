@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HistorialPersonal3"
+    android:id="@+id/HP3">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/otroCaja"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="326dp"
+        android:layout_height="75dp"
+        android:focusable="false"
+        android:hint="Cantidad bebidas semanales"
+        app:boxCornerRadiusBottomEnd="20dp"
+        app:boxCornerRadiusBottomStart="20dp"
+        app:boxCornerRadiusTopEnd="20dp"
+        app:boxCornerRadiusTopStart="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.639">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/otroText"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:inputType="number"
+            android:maxLines="1"
+            android:textSize="15sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:layout_width="323sp"
+        android:layout_height="88sp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:progress="50"
+        app:indicatorColor="#AAAAAA"
+        android:scaleY="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.16"
+        app:trackCornerRadius="50dp"/>
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="411dp"
+        android:layout_height="53dp"
+        android:textColor="#4F4E4E"
+        android:gravity="center_horizontal"
+        android:text="Historial Personal"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="260dp"
+        android:layout_height="20dp"
+        android:gravity="center_horizontal"
+        android:text="¿Consume bebidas alcohólicas?"
+        android:textAlignment="textStart"
+        android:textColor="#AAAAAA"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.284"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.218"
+        tools:ignore="RtlCompat" />
+
+    <RadioGroup
+        android:id="@+id/consumeBebidasRadioGroup"
+        android:layout_width="280dp"
+        android:layout_height="51dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.328"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.256">
+
+        <RadioButton
+            android:id="@+id/siConsumeBebidas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:onClick="onRadioButtonConsumeBebidasClicked"
+            android:text="Sí" />
+
+        <RadioButton
+
+            android:id="@+id/noConsumeBebidas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonConsumeBebidasClicked"
+            android:text="No" />
+    </RadioGroup>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="260dp"
+        android:layout_height="20dp"
+        android:gravity="center_horizontal"
+        android:id="@+id/consumoTotalTitulo"
+        android:text="¿Cuánto consume en total?"
+        android:textAlignment="textStart"
+        android:textColor="#AAAAAA"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.284"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.326"
+        tools:ignore="RtlCompat" />
+
+    <RadioGroup
+        android:id="@+id/cantidadBebidasRadioGroup"
+        android:layout_width="322dp"
+        android:layout_height="146dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.445">
+
+        <RadioButton
+            android:id="@+id/bebidasSemanales3"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:onClick="onRadioButtonCantidadBebidasClicked"
+            android:text="Más de 3 bebidas alcohólicas a la semana " />
+
+        <RadioButton
+
+            android:id="@+id/bebidasDiarias2"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:onClick="onRadioButtonCantidadBebidasClicked"
+            android:text="Más de 2 bebidas alcohólicas al día " />
+
+        <RadioButton
+            android:id="@+id/otro"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:onClick="onRadioButtonCantidadBebidasClicked"
+            android:text="Otro" />
+
+        <RadioButton
+            android:id="@+id/ningunaAnteriores"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:onClick="onRadioButtonCantidadBebidasClicked"
+            android:text="Ninguna de las anteriores" />
+    </RadioGroup>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="365dp"
+        android:layout_height="20dp"
+        android:gravity="center_horizontal"
+        android:id="@+id/otroTipoCancerTitulo"
+        android:text="¿Le han diagnosticado algún otro tipo de cáncer?"
+        android:textAlignment="textStart"
+        android:textColor="#AAAAAA"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.934"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.693"
+        tools:ignore="RtlCompat" />
+
+    <RadioGroup
+        android:id="@+id/OtroCancerRadioGroup"
+        android:layout_width="280dp"
+        android:layout_height="51dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.335"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.763">
+
+        <RadioButton
+            android:id="@+id/siOtroCancer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:onClick="onRadioButtonOtroCancerClicked"
+            android:text="Sí" />
+
+        <RadioButton
+
+            android:id="@+id/noOtroCancer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonOtroCancerClicked"
+            android:text="No" />
+    </RadioGroup>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tipoCancerCaja"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="326dp"
+        android:layout_height="75dp"
+        android:focusable="false"
+        android:hint="¿De qué tipo?"
+        app:boxCornerRadiusBottomEnd="20dp"
+        app:boxCornerRadiusBottomStart="20dp"
+        app:boxCornerRadiusTopEnd="20dp"
+        app:boxCornerRadiusTopStart="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.878">
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tipoCancerText"
+            android:layout_width="match_parent"
+            android:layout_height="51sp"
+            android:maxLines="1"
+            android:textSize="15sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/botonAnteriorHP3"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="140dp"
+        android:layout_height="59dp"
+        android:text="Anterior"
+        android:textAllCaps="false"
+        app:backgroundTint="#AAAAAA"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.162"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976"
+        tools:context=".MainActivity" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/botonSiguienteHP3"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="140dp"
+        android:layout_height="59dp"
+        android:text="Siguiente"
+        android:textAllCaps="false"
+        app:backgroundTint="#AAAAAA"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.837"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976"
+        tools:context=".MainActivity" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HistorialFamiliar2">
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/barraProgreso1"
+        android:layout_width="323sp"
+        android:layout_height="88sp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:progress="50"
+        app:indicatorColor="#AAAAAA"
+        android:scaleY="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.16"
+        app:trackCornerRadius="50dp"/>
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/materialTextView4"
+        android:layout_width="411dp"
+        android:layout_height="53dp"
+        android:gravity="center_horizontal"
+        android:text="Historial Familiar"
+        android:textAlignment="center"
+        android:textColor="#4F4E4E"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/materialTextView5"
+        android:layout_width="334dp"
+        android:layout_height="44dp"
+        android:gravity="center_horizontal"
+        android:text="¿Tiene familiares que hayan presentado cáncer de melanóma?"
+        android:textAlignment="textStart"
+        android:textColor="#AAAAAA"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.212"
+        tools:ignore="RtlCompat" />
+
+    <RadioGroup
+        android:id="@+id/consumeBebidasRadioGroup"
+        android:layout_width="280dp"
+        android:layout_height="51dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.335"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.28">
+
+        <RadioButton
+            android:id="@+id/siFamiliaresOtroCancer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:onClick="onRadioButtonOtroTipoCancerParentescoClicked"
+            android:text="Sí" />
+
+        <RadioButton
+
+            android:id="@+id/noFamiliaresOtroCancer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonOtroTipoCancerParentescoClicked"
+            android:text="No" />
+    </RadioGroup>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="351dp"
+        android:layout_height="289dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.733"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.757">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="328dp"
+            android:layout_height="298dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.53"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.803">
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/nuevoPariente"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="230dp"
+        android:layout_height="59dp"
+        android:text="Añadir nuevo parentesco"
+        android:textAllCaps="false"
+        app:backgroundTint="#AAAAAA"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.243"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.358"
+        tools:context=".MainActivity" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/botonAnteriorHF2"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="140dp"
+        android:layout_height="59dp"
+        android:text="Anterior"
+        android:textAllCaps="false"
+        app:backgroundTint="#AAAAAA"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.162"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976"
+        tools:context=".MainActivity" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/botonSiguienteHF2"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="140dp"
+        android:layout_height="59dp"
+        android:text="Siguiente"
+        android:textAllCaps="false"
+        app:backgroundTint="#AAAAAA"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.837"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976"
+        tools:context=".MainActivity" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

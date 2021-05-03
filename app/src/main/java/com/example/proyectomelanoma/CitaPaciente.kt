@@ -1,6 +1,7 @@
 package com.example.proyectomelanoma
 
 import android.content.Intent
+import android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
