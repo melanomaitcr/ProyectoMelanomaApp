@@ -9,6 +9,8 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
+
     <TextView
         android:id="@+id/x"
         android:layout_width="47dp"
@@ -25,31 +27,36 @@
         android:contentDescription='"Logo de la aplicación"'
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.500"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.1"
-        app:srcCompat="@drawable/praesidia" />
+        app:srcCompat="@drawable/prodermis" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/cajaCedula"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="280dp"
         android:layout_height="127dp"
+        android:textColor="#036262"
         android:hint="Número de cédula"
         app:boxCornerRadiusBottomEnd="20dp"
         app:boxCornerRadiusBottomStart="20dp"
         app:boxCornerRadiusTopEnd="20dp"
         app:boxCornerRadiusTopStart="20dp"
+        app:hintTextColor="#036262"
+        app:boxStrokeColor="#036262"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.500"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/numeroCedula"
+            android:inputType="number"
             android:layout_width="match_parent"
+            android:textColor="#036262"
             android:layout_height="wrap_content"
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -60,20 +67,23 @@
         android:layout_width="280dp"
         android:layout_height="127dp"
         android:hint="Código de la cita"
+        app:hintTextColor="#036262"
+        app:boxStrokeColor="#036262"
         app:boxCornerRadiusBottomEnd="20dp"
         app:boxCornerRadiusBottomStart="20dp"
         app:boxCornerRadiusTopEnd="20dp"
         app:boxCornerRadiusTopStart="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.500"
         app:layout_constraintStart_toStartOf="parent"
+
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.748">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/codigoCita"
-
+            android:textColor="#036262"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="1" />
@@ -93,7 +103,7 @@
         app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.500"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.976"

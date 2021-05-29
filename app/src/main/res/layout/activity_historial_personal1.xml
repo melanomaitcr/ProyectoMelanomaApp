@@ -8,134 +8,158 @@
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/barraProgreso1"
-        android:layout_width="323sp"
         android:layout_height="88sp"
         android:layout_gravity="center"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:progress="50"
-        app:indicatorColor="#AAAAAA"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="63dp"
+        android:layout_marginRight="35dp"
+        android:progress="40"
+        app:indicatorColor="#4BD2D2"
         android:scaleY="2"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.16"
+        app:layout_constraintTop_toTopOf="@id/tituloHistorialPersonal"
         app:trackCornerRadius="50dp"/>
 
 
     <com.google.android.material.textview.MaterialTextView
-        android:layout_width="411dp"
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
         android:layout_height="53dp"
-        android:textColor="#4F4E4E"
+        android:id="@+id/tituloHistorialPersonal"
+        android:textColor="#036262"
         android:gravity="center_horizontal"
         android:text="Historial Personal"
         android:textAlignment="center"
-        android:textSize="40sp"
+        android:textSize="34sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.05" />
+        app:layout_constraintVertical_bias="0.217">
 
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/pesoCaja"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="90dp"
+            android:layout_height="104sp"
+            android:hint="Peso"
+            android:textSize="14sp"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusTopStart="20dp"
+            app:boxStrokeColor="#036262"
+            app:hintTextColor="#036262"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.252"
+            app:suffixText="kg">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/pesoCaja"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="100dp"
-        android:layout_height="104sp"
-        android:hint="Peso"
-        app:suffixText="kg"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/pesoText"
+                android:layout_width="match_parent"
+                android:layout_height="55sp"
+                android:inputType="number"
+                android:maxLines="1"
+                android:textColor="#036262"
+                android:textSize="15sp" />
 
-        app:boxCornerRadiusBottomEnd="20dp"
-        app:boxCornerRadiusBottomStart="20dp"
-        app:boxCornerRadiusTopEnd="20dp"
-        app:boxCornerRadiusTopStart="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.141"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.313"
-        android:textSize="14sp">
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/pesoText"
-            android:layout_width="match_parent"
-            android:layout_height="55sp"
-            android:maxLines="1"
-            android:inputType="number"
-            android:textSize="15sp" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/estaturaCaja"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="90dp"
+            android:layout_height="104sp"
+            android:hint="Estatura"
+            android:layout_marginLeft="15dp"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusTopStart="20dp"
+            app:boxStrokeColor="#036262"
+            app:hintTextColor="#036262"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.252"
+            app:suffixText="cm">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/estaturaText"
+                android:layout_width="match_parent"
+                android:layout_height="55sp"
+                android:inputType="number"
+                android:maxLines="1"
+                android:textColor="#036262"
+                android:textSize="15sp" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/estaturaCaja"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="100dp"
-        android:layout_height="104sp"
-        android:hint="Estatura"
-        app:boxCornerRadiusBottomEnd="20dp"
-        app:boxCornerRadiusBottomStart="20dp"
-        app:boxCornerRadiusTopEnd="20dp"
-        app:boxCornerRadiusTopStart="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.313"
-        app:suffixText="cm">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/estaturaText"
-            android:layout_width="match_parent"
-            android:layout_height="55sp"
-            android:maxLines="1"
-            android:inputType="number"
-            android:textSize="15sp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/IMCCaja"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="100dp"
-        android:layout_height="104sp"
-        android:hint="IMC"
-        app:boxCornerRadiusBottomEnd="20dp"
-        app:boxCornerRadiusBottomStart="20dp"
-        app:boxCornerRadiusTopEnd="20dp"
-        app:boxCornerRadiusTopStart="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.858"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.313">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/IMCCaja"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="90dp"
+            android:layout_height="104sp"
+            android:hint="IMC"
+            android:layout_marginRight="35dp"
+            android:layout_marginLeft="15dp"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusTopStart="20dp"
+            app:boxStrokeColor="#036262"
+            app:hintTextColor="#036262"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.858"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.252">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/IMCText"
-            android:layout_width="match_parent"
-            android:layout_height="55sp"
-            android:enabled="false"
-            android:maxLines="1"
-            android:textSize="15sp" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/IMCText"
+                android:layout_width="match_parent"
+                android:layout_height="55sp"
+                android:enabled="false"
+                android:maxLines="1"
+                android:textColor="#036262"
+                android:textSize="15sp" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/materialTextView2"
-        android:layout_width="259dp"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
         android:layout_height="36dp"
         android:gravity="center_horizontal"
         android:text="¿Realiza actividad física?"
         android:textAlignment="textStart"
-        android:textColor="#AAAAAA"
+        android:textColor="#036262"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -143,11 +167,13 @@
         app:layout_constraintHorizontal_bias="0.289"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.437"
+        app:layout_constraintVertical_bias="0.357"
         tools:ignore="RtlCompat" />
 
     <RadioGroup
-        android:layout_width="280dp"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
         android:layout_height="51dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -155,9 +181,10 @@
         app:layout_constraintHorizontal_bias="0.335"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.485">
+        app:layout_constraintVertical_bias="0.405">
 
         <RadioButton
+            android:textColor="#036262"
             android:id="@+id/siActividadFisica"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -166,7 +193,7 @@
             android:text="Sí" />
 
         <RadioButton
-
+            android:textColor="#036262"
             android:id="@+id/noActividadFisica"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -176,7 +203,9 @@
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="323dp"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
         android:layout_height="104sp"
         android:id="@+id/cantidadMinutosCaja"
         android:focusable="false"
@@ -185,18 +214,21 @@
         app:boxCornerRadiusBottomStart="20dp"
         app:boxCornerRadiusTopEnd="20dp"
         app:boxCornerRadiusTopStart="20dp"
+        app:boxStrokeColor="#036262"
+        app:hintTextColor="#036262"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:suffixText="min"
-        app:layout_constraintVertical_bias="0.642">
+        app:suffixText="minutos"
+        app:layout_constraintVertical_bias="0.562">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/cantidadMinutosText"
             android:layout_width="match_parent"
             android:layout_height="55sp"
             android:inputType="number"
+            android:textColor="#036262"
             android:maxLines="1"
             android:textSize="15sp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -208,11 +240,10 @@
         android:layout_height="59dp"
         android:text="Anterior"
         android:textAllCaps="false"
-        app:backgroundTint="#AAAAAA"
+        app:backgroundTint="#036262"
         app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.162"
+        android:layout_marginLeft="35dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.976"
@@ -225,12 +256,11 @@
         android:layout_height="59dp"
         android:text="Siguiente"
         android:textAllCaps="false"
-        app:backgroundTint="#AAAAAA"
+        app:backgroundTint="#036262"
         app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.837"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginRight="35dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.976"
         tools:context=".MainActivity" />

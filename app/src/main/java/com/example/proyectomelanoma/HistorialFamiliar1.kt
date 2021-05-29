@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.CheckBox
 import android.widget.RadioButton
+import android.widget.TextView
+import androidx.core.view.isVisible
 import com.google.android.material.button.MaterialButton
 
 
@@ -31,13 +33,30 @@ class HistorialFamiliar1 : AppCompatActivity() {
         val abueloMaternoCheck: CheckBox = findViewById(R.id.abueloMaternoCheck)
         val abuelaPaternaCheck: CheckBox = findViewById(R.id.abuelaPaternaCheck)
         val abueloPaternoCheck: CheckBox = findViewById(R.id.abueloPaternoCheck)
+
+        val parentescoTitulo: TextView = findViewById(R.id.parentescoTitulo)
         listaCheckBox = mutableListOf(madreCheck, padreCheck, hermanaCheck, hermanoCheck, tiaMaternaCheck, tioMaternoCheck, tiaPaternaCheck, tioPaternoCheck, abuelaMaternaCheck, abueloMaternoCheck, abuelaPaternaCheck, abueloPaternoCheck)
         var listaPar = mutableListOf("Madre","Padre", "Hermana", "Hermano", "Tía Materna", "Tío Materno","Tía Paterna","Tío Paterno", "Abuela Materna","Abuelo Materno","Abuela Paterna", "Abuelo Paterno")
 
-        if (historialFamiliarCita.familiares_con_cancer_melanoma == "1")
-            siFamiliaresMelanoma.isChecked=true
+        if (historialFamiliarCita.familiares_con_cancer_melanoma == "1") {
+            siFamiliaresMelanoma.isChecked = true
+            for (num in listOf(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11)) {
+                listaCheckBox[num].isVisible = true
+            }
+        }
         if (historialFamiliarCita.familiares_con_cancer_melanoma == "0")
             noFamiliaresMelanoma.isChecked=true
+
+        if(historialFamiliarCita.familiares_con_cancer_melanoma != "1") {
+            for (num in listOf(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11)) {
+                listaCheckBox[num].isVisible = false
+            }
+            parentescoTitulo.isVisible = false
+        }
+        for (num in listOf(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11)) {
+            if (listaPar[num] in listaParientes)
+                listaCheckBox[num].isChecked = true
+        }
         val botonAnterior: MaterialButton = findViewById(R.id.botonAnteriorHF1)
         botonAnterior.setOnClickListener {
             val intent = Intent(this@HistorialFamiliar1, HistorialPersonal3::class.java)
@@ -60,16 +79,28 @@ class HistorialFamiliar1 : AppCompatActivity() {
     }
 
     fun onRadioButtonFamiliaresMelanomaClicked(view: View) {
+        val parentescoTitulo: TextView = findViewById(R.id.parentescoTitulo)
         if (view is RadioButton) {
             val checked = view.isChecked
             when (view.getId()) {
                 R.id.siFamiliaresMelanoma ->
                     if (checked) {
                         historialFamiliarCita.familiares_con_cancer_melanoma = "1"
+                        for (num in listOf(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11)) {
+                            listaCheckBox[num].isVisible = true
+                        }
+                        parentescoTitulo.isVisible = true
                     }
                 R.id.noFamiliaresMelanoma ->
                     if (checked) {
                         historialFamiliarCita.familiares_con_cancer_melanoma = "0"
+                        for (num in listOf(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11)) {
+                            listaCheckBox[num].isVisible = false
+                            listaParientes = mutableListOf()
+                            historialFamiliarCita.parientes_con_cancer_melanoma = ""
+                            listaCheckBox[num].isChecked = false
+                            parentescoTitulo.isVisible = false
+                        }
                     }
             }
         }

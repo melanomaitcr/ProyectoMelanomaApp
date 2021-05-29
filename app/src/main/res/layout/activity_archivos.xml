@@ -1,9 +1,286 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Archivos">
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/materialTextView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal"
+        android:text="Archivos-Cita"
+        android:textAlignment="center"
+        android:textColor="#036262"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/barraProgreso1"
+        android:layout_width="match_parent"
+        android:layout_height="88sp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
+        android:layout_marginTop="20dp"
+        android:progress="90"
+        app:indicatorColor="#4BD2D2"
+        android:scaleY="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.16"
+        app:trackCornerRadius="50dp"/>
+
+
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/materialTextView5"
+        android:layout_width="match_parent"
+        android:layout_marginRight="35dp"
+        android:layout_marginLeft="35dp"
+        android:layout_height="wrap_content"
+        android:text="En esta sección deberá adjuntar todos los archivos que sean importantes para el día de su cita (archivos, fotografías, diagnósticos previos)"
+        android:textAlignment="textStart"
+        android:layout_marginTop="22sp"
+        android:textColor="#036262"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:ignore="RtlCompat" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.741"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/materialTextView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+
+        android:maxWidth="200dp"
+        android:gravity="center_horizontal"
+        android:text="Imágenes"
+        android:textAlignment="textStart"
+
+
+        android:textColor="#036262"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.147"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.332"
+        tools:ignore="RtlCompat" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/nuevaImagen"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="39dp"
+
+                android:layout_marginRight="35dp"
+                android:layout_marginLeft="5dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                app:backgroundTint="#036262"
+                app:cornerRadius="100dp"
+                app:icon="@drawable/outline_add_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.864"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.333"
+                tools:context=".MainActivity" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutImagenes"
+            android:layout_width="match_parent"
+            android:layout_marginRight="35dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="35dp"
+            android:gravity="left"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.53"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.803">
+
+
+
+            <TextView
+                android:id="@+id/imagenesTexto"
+                android:layout_width="match_parent"
+                android:gravity="center_horizontal"
+                android:textColor="#036262"
+                android:paddingTop="20dp"
+                android:paddingBottom="15dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="10dp"
+                android:text="Selecciona tu imagen o imágenes para agregar a la cita"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.741"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_height="wrap_content" android:layout_width="match_parent">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/Archivos"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:gravity="center_horizontal"
+                android:text="Archivos"
+                android:textAlignment="textStart"
+                android:textColor="#036262"
+                android:textSize="23sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.138"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.659"
+                tools:ignore="RtlCompat" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/nuevoArchivo"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="39dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:layout_marginLeft="5dp"
+                android:textAllCaps="false"
+                app:backgroundTint="#036262"
+                app:cornerRadius="20dp"
+
+                app:icon="@drawable/outline_add_24"
+                tools:context=".MainActivity" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutArchivos"
+            android:layout_width="match_parent"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.53"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.803">
+            <TextView
+                android:id="@+id/archivosTexto"
+                android:layout_width="match_parent"
+                android:layout_column="1"
+                android:gravity="center_horizontal"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:textColor="#036262"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="Selecciona tu archivo o archivos para agregar a la cita"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.741"
+        android:layout_marginBottom="5dp"
+        android:layout_height="wrap_content" android:layout_width="match_parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/botonAnteriorA1"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="140dp"
+            android:layout_height="59dp"
+            android:text="Anterior"
+            android:textAllCaps="false"
+            app:backgroundTint="#036262"
+            app:cornerRadius="20dp"
+            android:layout_marginLeft="35dp"
+            tools:context=".MainActivity" />
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="right">
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/botonFinalizarA1"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="140dp"
+            android:layout_height="59dp"
+            android:text="Finalizar"
+            android:textAllCaps="false"
+            app:backgroundTint="#036262"
+            app:cornerRadius="20dp"
+            android:layout_marginRight="35dp"
+            tools:context=".MainActivity" />
+</RelativeLayout>
+
+    </LinearLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+</ScrollView>

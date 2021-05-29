@@ -4,60 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/bienvenida">
+    tools:context=".FinalizacionCita"
+    >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.324"
-        android:orientation="vertical">
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/materialTextView7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
+
         android:gravity="center_horizontal"
-        android:text="Bienvenido al Sistema Prodermis"
+        android:text="¡Has finalizado\n con éxito!"
         android:textAlignment="center"
-        android:textColor="#036262"
         android:textSize="80px"
-        android:layout_marginLeft="35dp"
-        android:layout_marginRight="35dp"
-        android:textStyle="bold"
-         />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="35dp"
-        android:layout_marginRight="35dp"
-        android:gravity="center_horizontal"
-        android:layout_marginTop="30dp"
-        android:text="¡Bienvenido!\n Para empezar te realizaremos unas preguntas básicas de registro para tu cita"
-        android:textAlignment="center"
         android:textColor="#036262"
-        android:textSize="50px"
+        android:textStyle="bold"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.628"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.437" />
-    </LinearLayout>
+        app:layout_constraintVertical_bias="0.116" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="280dp"
+        android:layout_height="141dp"
+        android:contentDescription='"Logo de la aplicación"'
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.541"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/prodermis" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/botonBienvenida"
+        android:id="@+id/botonSalir"
         style="@style/Widget.MaterialComponents.Button"
-        android:layout_width="match_parent"
-        android:layout_marginRight="35dp"
-        android:layout_marginLeft="35dp"
+        android:layout_width="280dp"
         android:layout_height="59dp"
 
-        android:text="Aceptar"
+        android:text="Salir"
         app:backgroundTint="#036262"
         android:textAllCaps="false"
 

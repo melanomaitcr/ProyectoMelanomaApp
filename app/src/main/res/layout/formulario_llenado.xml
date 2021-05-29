@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:gravity="center"
-    android:id="@+id/datos_incorrectos"
+    android:id="@+id/formulario_llenado"
     android:layout_height="wrap_content"
     >
 
@@ -15,17 +15,18 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="35dp"
         android:layout_marginRight="35dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="20dp"
 
         android:gravity="center_horizontal"
         android:scaleType="center"
-        android:textColor="#036262"
-        android:text="Datos ingresados son incorrectos"
+        android:layout_marginTop="20dp"
+
+        android:text="Formulario previamente rellenado"
         android:textAlignment="center"
+        android:textColor="#036262"
         android:textSize="30sp" />
 
     <androidx.appcompat.widget.AppCompatTextView
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="35dp"
@@ -34,12 +35,12 @@
         android:textColor="#036262"
         android:gravity="center_horizontal"
         android:scaleType="center"
-        android:text="El número de cédula o código de cita ingresados no están asociados a una cita, por favor compruebe los datos e inténtelo nuevamente"
+        android:text="Usted ya ha ingresado previamente los datos necesarios para esta cita, por lo que no se pueden ingresar nuevamente"
         android:textAlignment="center"
         android:textSize="16sp" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/entendido"
+        android:id="@+id/entendidoLlenado"
         android:layout_width="121dp"
         android:backgroundTint="#036262"
         android:layout_height="wrap_content"
@@ -49,6 +50,6 @@
         android:textAllCaps="false"
         android:textSize="15sp"
 
-        app:cornerRadius="20dp" />
+        app:cornerRadius="20dp"/>
 
 </LinearLayout>

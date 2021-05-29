@@ -38,21 +38,21 @@ class HistorialPersonal3 : AppCompatActivity() {
         val ningunaAnteriores: RadioButton = findViewById(R.id.ningunaAnteriores)
         val tipoCancerText: TextInputEditText = findViewById(R.id.tipoCancerText)
 
-        if(historialPersonalCita.consume_bebidas_alcoholicas_total=="0")
-            bebidasSemanales3.isChecked=true
-        else if(historialPersonalCita.consume_bebidas_alcoholicas_total=="1")
-            bebidasDiarias2.isChecked=true
-        else if(historialPersonalCita.consume_bebidas_alcoholicas_total=="2") {
-            otro.isChecked=true
-            otroText.setText(historialPersonalCita.consume_bebidas_alcoholicas_total_otro)
-            val otroTipoCancerTituloVertical = otroTipoCancerTitulo.layoutParams as ConstraintLayout.LayoutParams
-            otroTipoCancerTituloVertical.verticalBias = 0.693f
-            val otroTipoCancerRadioGroupVertical = otroTipoCancerRadioGroup.layoutParams as ConstraintLayout.LayoutParams
-            otroTipoCancerRadioGroupVertical.verticalBias = 0.763f
-            val tipoCancerCajaVertical = tipoCancerCaja.layoutParams as ConstraintLayout.LayoutParams
-            tipoCancerCajaVertical.verticalBias = 0.878f
-        } else if (historialPersonalCita.consume_bebidas_alcoholicas_total=="3")
-            ningunaAnteriores.isChecked=true
+        when (historialPersonalCita.consume_bebidas_alcoholicas_total) {
+            "1" -> bebidasSemanales3.isChecked=true
+            "2" -> bebidasDiarias2.isChecked=true
+            "3" -> {
+                otro.isChecked=true
+                otroText.setText(historialPersonalCita.consume_bebidas_alcoholicas_total_otro)
+                val otroTipoCancerTituloVertical = otroTipoCancerTitulo.layoutParams as ConstraintLayout.LayoutParams
+                otroTipoCancerTituloVertical.verticalBias = 0.703f
+                val otroTipoCancerRadioGroupVertical = otroTipoCancerRadioGroup.layoutParams as ConstraintLayout.LayoutParams
+                otroTipoCancerRadioGroupVertical.verticalBias = 0.773f
+                val tipoCancerCajaVertical = tipoCancerCaja.layoutParams as ConstraintLayout.LayoutParams
+                tipoCancerCajaVertical.verticalBias = 0.884f
+            }
+            "4" -> ningunaAnteriores.isChecked=true
+        }
 
         if(historialPersonalCita.diagnostico_propio_cancer == "1"){
             tipoCancerCaja.isVisible = true
@@ -71,7 +71,7 @@ class HistorialPersonal3 : AppCompatActivity() {
             consumoTotalTitulo.isVisible = true
             cantidadBebidasRadioGroup.isVisible = true
             siConsumeBebidas.isChecked = true
-            if(historialPersonalCita.consume_bebidas_alcoholicas_total =="2"){
+            if(historialPersonalCita.consume_bebidas_alcoholicas_total =="3"){
                 cantidadBebidasOtroCaja.isVisible = true
                 otroText.setText(historialPersonalCita.consume_bebidas_alcoholicas_total_otro)
 
@@ -82,7 +82,7 @@ class HistorialPersonal3 : AppCompatActivity() {
                 val otroTipoCancerRadioGroupVertical = otroTipoCancerRadioGroup.layoutParams as ConstraintLayout.LayoutParams
                 otroTipoCancerRadioGroupVertical.verticalBias = 0.699f
                 val tipoCancerCajaVertical = tipoCancerCaja.layoutParams as ConstraintLayout.LayoutParams
-                tipoCancerCajaVertical.verticalBias = 0.814f
+                tipoCancerCajaVertical.verticalBias = 0.810f
             }
         }else{
             if(historialPersonalCita.consume_bebidas_alcoholicas=="0")
@@ -92,11 +92,11 @@ class HistorialPersonal3 : AppCompatActivity() {
             siConsumeBebidas.isChecked = false
             cantidadBebidasOtroCaja.isVisible = false
             val otroTipoCancerTituloVertical = otroTipoCancerTitulo.layoutParams as ConstraintLayout.LayoutParams
-            otroTipoCancerTituloVertical.verticalBias = 0.326f
+            otroTipoCancerTituloVertical.verticalBias = 0.291f
             val otroTipoCancerRadioGroupVertical = otroTipoCancerRadioGroup.layoutParams as ConstraintLayout.LayoutParams
-            otroTipoCancerRadioGroupVertical.verticalBias = 0.396f
+            otroTipoCancerRadioGroupVertical.verticalBias = 0.361f
             val tipoCancerCajaVertical = tipoCancerCaja.layoutParams as ConstraintLayout.LayoutParams
-            tipoCancerCajaVertical.verticalBias = 0.511f
+            tipoCancerCajaVertical.verticalBias = 0.472f
         }
 
         otroText.addTextChangedListener(object : TextWatcher {
@@ -168,17 +168,12 @@ class HistorialPersonal3 : AppCompatActivity() {
                         historialPersonalCita.consume_bebidas_alcoholicas = "1"
                         consumoTotalTitulo.isVisible = true
                         cantidadBebidasRadioGroup.isVisible = true
-                        cantidadBebidasOtroCaja.isVisible = false
-                        bebidasSemanales3.isChecked=false
-                        bebidasDiarias2.isChecked=false
-                        otro.isChecked = false
-                        ningunaAnteriores.isChecked = false
                         val otroTipoCancerTituloVertical = otroTipoCancerTitulo.layoutParams as ConstraintLayout.LayoutParams
                         otroTipoCancerTituloVertical.verticalBias = 0.629f
                         val otroTipoCancerRadioGroupVertical = otroTipoCancerRadioGroup.layoutParams as ConstraintLayout.LayoutParams
                         otroTipoCancerRadioGroupVertical.verticalBias = 0.699f
                         val tipoCancerCajaVertical = tipoCancerCaja.layoutParams as ConstraintLayout.LayoutParams
-                        tipoCancerCajaVertical.verticalBias = 0.814f
+                        tipoCancerCajaVertical.verticalBias = 0.810f
                     }
                 R.id.noConsumeBebidas ->
                     if (checked) {
@@ -187,14 +182,15 @@ class HistorialPersonal3 : AppCompatActivity() {
                         historialPersonalCita.consume_bebidas_alcoholicas_total_otro=""
 
                         consumoTotalTitulo.isVisible = false
+                        cantidadBebidasRadioGroup.clearCheck()
                         cantidadBebidasRadioGroup.isVisible = false
                         cantidadBebidasOtroCaja.isVisible = false
                         val otroTipoCancerTituloVertical = otroTipoCancerTitulo.layoutParams as ConstraintLayout.LayoutParams
-                        otroTipoCancerTituloVertical.verticalBias = 0.326f
+                        otroTipoCancerTituloVertical.verticalBias = 0.291f
                         val otroTipoCancerRadioGroupVertical = otroTipoCancerRadioGroup.layoutParams as ConstraintLayout.LayoutParams
-                        otroTipoCancerRadioGroupVertical.verticalBias = 0.396f
+                        otroTipoCancerRadioGroupVertical.verticalBias = 0.361f
                         val tipoCancerCajaVertical = tipoCancerCaja.layoutParams as ConstraintLayout.LayoutParams
-                        tipoCancerCajaVertical.verticalBias = 0.511f
+                        tipoCancerCajaVertical.verticalBias = 0.472f
                     }
             }
         }
@@ -215,8 +211,8 @@ class HistorialPersonal3 : AppCompatActivity() {
             when (view.getId()) {
                 R.id.bebidasSemanales3 ->
                     if (checked) {
-                        historialPersonalCita.consume_bebidas_alcoholicas_total = "0"
-                        historialPersonalCita.consume_bebidas_alcoholicas_total_otro = "Más de 3 bebidas semanales"
+                        historialPersonalCita.consume_bebidas_alcoholicas_total = "1"
+                        historialPersonalCita.consume_bebidas_alcoholicas_total_otro = ""
                         cantidadBebidasOtroCaja.isVisible = false
                         bebidasSemanales3.isChecked = true
                         val otroTipoCancerTituloVertical = otroTipoCancerTitulo.layoutParams as ConstraintLayout.LayoutParams
@@ -224,44 +220,44 @@ class HistorialPersonal3 : AppCompatActivity() {
                         val otroTipoCancerRadioGroupVertical = otroTipoCancerRadioGroup.layoutParams as ConstraintLayout.LayoutParams
                         otroTipoCancerRadioGroupVertical.verticalBias = 0.699f
                         val tipoCancerCajaVertical = tipoCancerCaja.layoutParams as ConstraintLayout.LayoutParams
-                        tipoCancerCajaVertical.verticalBias = 0.814f
+                        tipoCancerCajaVertical.verticalBias = 0.810f
                     }
                 R.id.bebidasDiarias2 ->
                     if (checked) {
-                        historialPersonalCita.consume_bebidas_alcoholicas_total = "1"
-                        historialPersonalCita.consume_bebidas_alcoholicas_total_otro = "Más de 2 bebidas diarias"
+                        historialPersonalCita.consume_bebidas_alcoholicas_total = "2"
+                        historialPersonalCita.consume_bebidas_alcoholicas_total_otro = ""
                         cantidadBebidasOtroCaja.isVisible = false
                         val otroTipoCancerTituloVertical = otroTipoCancerTitulo.layoutParams as ConstraintLayout.LayoutParams
                         otroTipoCancerTituloVertical.verticalBias = 0.629f
                         val otroTipoCancerRadioGroupVertical = otroTipoCancerRadioGroup.layoutParams as ConstraintLayout.LayoutParams
                         otroTipoCancerRadioGroupVertical.verticalBias = 0.699f
                         val tipoCancerCajaVertical = tipoCancerCaja.layoutParams as ConstraintLayout.LayoutParams
-                        tipoCancerCajaVertical.verticalBias = 0.814f
+                        tipoCancerCajaVertical.verticalBias = 0.810f
                     }
                 R.id.otro ->
                     if (checked) {
-                        historialPersonalCita.consume_bebidas_alcoholicas_total = "2"
+                        historialPersonalCita.consume_bebidas_alcoholicas_total = "3"
                         historialPersonalCita.consume_bebidas_alcoholicas_total_otro = ""
                         otroText.setText("")
                         cantidadBebidasOtroCaja.isVisible = true
                         val otroTipoCancerTituloVertical = otroTipoCancerTitulo.layoutParams as ConstraintLayout.LayoutParams
-                        otroTipoCancerTituloVertical.verticalBias = 0.693f
+                        otroTipoCancerTituloVertical.verticalBias = 0.703f
                         val otroTipoCancerRadioGroupVertical = otroTipoCancerRadioGroup.layoutParams as ConstraintLayout.LayoutParams
-                        otroTipoCancerRadioGroupVertical.verticalBias = 0.763f
+                        otroTipoCancerRadioGroupVertical.verticalBias = 0.773f
                         val tipoCancerCajaVertical = tipoCancerCaja.layoutParams as ConstraintLayout.LayoutParams
-                        tipoCancerCajaVertical.verticalBias = 0.878f
+                        tipoCancerCajaVertical.verticalBias = 0.884f
                     }
                 R.id.ningunaAnteriores ->
                     if (checked) {
-                        historialPersonalCita.consume_bebidas_alcoholicas_total = "3"
-                        historialPersonalCita.consume_bebidas_alcoholicas_total_otro = "Ninguna de las anteriores"
+                        historialPersonalCita.consume_bebidas_alcoholicas_total = "4"
+                        historialPersonalCita.consume_bebidas_alcoholicas_total_otro = ""
                         cantidadBebidasOtroCaja.isVisible = false
                         val otroTipoCancerTituloVertical = otroTipoCancerTitulo.layoutParams as ConstraintLayout.LayoutParams
                         otroTipoCancerTituloVertical.verticalBias = 0.629f
                         val otroTipoCancerRadioGroupVertical = otroTipoCancerRadioGroup.layoutParams as ConstraintLayout.LayoutParams
                         otroTipoCancerRadioGroupVertical.verticalBias = 0.699f
                         val tipoCancerCajaVertical = tipoCancerCaja.layoutParams as ConstraintLayout.LayoutParams
-                        tipoCancerCajaVertical.verticalBias = 0.814f
+                        tipoCancerCajaVertical.verticalBias = 0.810f
                     }
             }
         }

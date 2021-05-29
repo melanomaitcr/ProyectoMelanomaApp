@@ -58,16 +58,21 @@ class HistorialPersonal1 : AppCompatActivity() {
         estatura.addTextChangedListener(object : TextWatcher {
             @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                if(estatura.text.toString().isNotEmpty() && estatura.text.toString().toFloat() > 0) {
+                if(estatura.text.toString().isNotEmpty() ) {
                     historialPersonalCita.estatura_cm = estatura.text.toString()
-                    if (peso.text.toString().isNotEmpty() && peso.text.toString().toFloat() > 0) {
+                    if (peso.text.toString().isNotEmpty() && peso.text.toString().toFloat() > 0 && estatura.text.toString().toFloat() > 0) {
                         val valor = String.format("%.3f",(historialPersonalCita.peso_kg.toFloat() / (historialPersonalCita.estatura_cm.toFloat() / 100).pow(2)))
                         imc.setText(valor)
                         historialPersonalCita.imc = valor
+                    }else{
+                        imc.setText("0")
+                        historialPersonalCita.imc = "0"
                     }
                 }else{
-                    imc.setText("")
-                    historialPersonalCita.imc = ""
+                    if(peso.text.toString().isEmpty()) {
+                        imc.setText("")
+                        historialPersonalCita.imc = ""
+                    }
                 }
             }
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
@@ -76,18 +81,24 @@ class HistorialPersonal1 : AppCompatActivity() {
 
         peso.addTextChangedListener(object : TextWatcher {
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                if(peso.text.toString().isNotEmpty() && peso.text.toString().toFloat() > 0) {
+                if(peso.text.toString().isNotEmpty()) {
                     historialPersonalCita.peso_kg = peso.text.toString()
-                    if (estatura.text.toString().isNotEmpty() && estatura.text.toString().toFloat() > 0) {
+                    if (estatura.text.toString().isNotEmpty() && estatura.text.toString().toFloat() > 0 && peso.text.toString().toFloat() > 0) {
                         val valor = String.format("%.3f",(historialPersonalCita.peso_kg.toFloat() / (historialPersonalCita.estatura_cm.toFloat() / 100).pow(2)))
                         imc.setText(valor)
                         historialPersonalCita.imc = valor
+                    }else{
+                        imc.setText("0")
+                        historialPersonalCita.imc = "0"
                     }
                 }else{
-                    imc.setText("")
-                    historialPersonalCita.imc = ""
+                    if(estatura.text.toString().isEmpty()) {
+                        imc.setText("")
+                        historialPersonalCita.imc = ""
+                    }
                 }
             }
+
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun afterTextChanged(s: Editable) {}
         })

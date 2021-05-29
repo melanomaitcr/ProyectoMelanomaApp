@@ -109,8 +109,7 @@ class HistorialPersonal2 : AppCompatActivity() {
                         fumaActualmenteRadioGroup.isVisible=false
                         fumaActualmenteTitulo.isVisible=false
                         mesesFumandoCaja.isVisible=false
-                        noFumaActualmenteRadioButton.isChecked = false
-                        siFumaActualmenteRadioButton.isChecked = false
+                        fumaActualmenteRadioGroup.clearCheck()
                         mesesFumando.setText("")
                         edadFumar.setText("")
                         historialPersonalCita.periodo_fumado=""

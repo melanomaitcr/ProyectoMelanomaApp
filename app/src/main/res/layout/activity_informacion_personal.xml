@@ -6,78 +6,84 @@
     android:layout_height="match_parent"
     tools:context=".InformacionPersonal">
 
-
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/barraProgreso1"
-        android:layout_width="323sp"
+        android:layout_width="match_parent"
         android:layout_height="88sp"
         android:layout_gravity="center"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:progress="12"
-        app:indicatorColor="#AAAAAA"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
+        android:progress="10"
+        app:indicatorColor="#4BD2D2"
         android:scaleY="2"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="63dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.16"
+        app:layout_constraintTop_toTopOf="@id/tituloDatosPersonales"
         app:trackCornerRadius="50dp"/>
 
 
     <com.google.android.material.textview.MaterialTextView
-        android:layout_width="411dp"
+        android:layout_width="match_parent"
+        android:id="@+id/tituloDatosPersonales"
+        android:layout_marginTop="20dp"
         android:layout_height="53dp"
         android:gravity="center_horizontal"
         android:text="Datos Personales"
         android:textAlignment="center"
-        android:textColor="#4F4E4E"
-        android:textSize="40sp"
+        android:textColor="#036262"
+        android:textSize="34sp"
+        android:textStyle="bold"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/materialTextView"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
+        android:gravity="center_horizontal"
+        android:text="Información Personal"
+        android:textAlignment="textStart"
+        android:textColor="#036262"
+        android:textSize="23sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.05" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/materialTextView"
-        android:layout_width="247dp"
-        android:layout_height="30dp"
-        android:gravity="center_horizontal"
-        android:text="Información Personal"
-        android:textAlignment="textStart"
-        android:textSize="23sp"
-        android:textColor="#AAAAAA"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.268"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.215"
+        app:layout_constraintVertical_bias="0.188"
         tools:ignore="RtlCompat" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/nombrePacienteFormularioLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="323dp"
-        android:layout_height="104sp"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
+        android:layout_height="104dp"
         android:hint="Nombre del paciente"
         app:boxCornerRadiusBottomEnd="20dp"
         app:boxCornerRadiusBottomStart="20dp"
+        app:boxStrokeColor="#036262"
+        app:hintTextColor="#036262"
         app:boxCornerRadiusTopEnd="20dp"
         app:boxCornerRadiusTopStart="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.331">
+        app:layout_constraintVertical_bias="0.296">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/nombrePacienteText"
             android:layout_width="match_parent"
+            android:textColor="#036262"
             android:layout_height="51sp"
             android:textSize="15sp"
             android:enabled="false"
@@ -87,9 +93,12 @@
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="323dp"
-        android:layout_height="104sp"
-
+        android:layout_width="match_parent"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
+        android:layout_height="104dp"
+        app:boxStrokeColor="#036262"
+        app:hintTextColor="#036262"
         android:focusable="false"
         android:hint="Número de cédula"
         app:boxCornerRadiusBottomEnd="20dp"
@@ -100,12 +109,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.472">
+        app:layout_constraintVertical_bias="0.446">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/numeroCedulaText"
             android:layout_width="match_parent"
             android:layout_height="51sp"
+            android:textColor="#036262"
             android:textSize="15sp"
             android:enabled="false"
             android:maxLines="1" />
@@ -114,11 +124,14 @@
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="324dp"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
         android:layout_height="96dp"
         android:focusable="false"
         android:hint="Fecha de nacimiento"
-
+        app:boxStrokeColor="#036262"
+        app:hintTextColor="#036262"
         app:boxCornerRadiusBottomEnd="20dp"
         app:boxCornerRadiusBottomStart="20dp"
         app:boxCornerRadiusTopEnd="20dp"
@@ -127,12 +140,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.613">
+        app:layout_constraintVertical_bias="0.596">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/fechaNacimientoText"
             android:layout_width="match_parent"
             android:layout_height="51sp"
+            android:textColor="#036262"
             android:enabled="false"
             android:maxLines="1"
             android:textSize="15sp" />
@@ -140,11 +154,14 @@
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="323dp"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
         android:layout_height="104sp"
 
         android:hint="Nacionalidad"
-
+        app:boxStrokeColor="#036262"
+        app:hintTextColor="#036262"
         app:boxCornerRadiusBottomEnd="20dp"
         app:boxCornerRadiusBottomStart="20dp"
         app:boxCornerRadiusTopEnd="20dp"
@@ -153,12 +170,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.754">
+        app:layout_constraintVertical_bias="0.746">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/nacionalidadText"
             android:layout_width="match_parent"
             android:layout_height="51sp"
+            android:textColor="#036262"
             android:textSize="15sp"
             android:enabled="false"
             android:maxLines="1" />
@@ -166,9 +184,12 @@
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="323dp"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
         android:layout_height="104sp"
-
+        app:boxStrokeColor="#036262"
+        app:hintTextColor="#036262"
         android:focusable="false"
         android:hint="Identidad étnica-racial"
         app:boxCornerRadiusBottomEnd="20dp"
@@ -179,12 +200,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.895">
+        app:layout_constraintVertical_bias="0.896">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/identidadEtnicaText"
             android:layout_width="match_parent"
             android:layout_height="51sp"
+            android:textColor="#036262"
             android:textSize="15sp"
             android:enabled="false"
             android:maxLines="1" />
@@ -193,15 +215,17 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/botonInfoPersonal"
         style="@style/Widget.MaterialComponents.Button"
-        android:layout_width="280dp"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
         android:layout_height="59dp"
         android:text="Siguiente"
         android:textAllCaps="false"
-        app:backgroundTint="#AAAAAA"
+        app:backgroundTint="#036262"
         app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.500"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.976"
