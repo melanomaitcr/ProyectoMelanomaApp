@@ -20,8 +20,10 @@ import android.widget.RadioButton
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.DrawableCompat
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -102,12 +104,22 @@ class HistorialFamiliar2 : AppCompatActivity() {
         var familiarOtroCancer = FamiliarOtroCancer()
         if (previo)
             familiarOtroCancer= familiar!!
+        val linearLayout= LinearLayout(ll.context)
+
+        val clpTextInputLayout0 = LinearLayout.LayoutParams(
+            ConstraintLayout.LayoutParams.WRAP_CONTENT,
+            ConstraintLayout.LayoutParams.WRAP_CONTENT
+        )
+        linearLayout.orientation = LinearLayout.HORIZONTAL
+        linearLayout.layoutParams = clpTextInputLayout0
+        ll.addView(linearLayout)
         val textView = TextView(ll.context)
+
         textView.setText("Familiar")
         textView.textSize = 18F
         textView.setTextColor(parseColor("#036262"))
         textView.setTypeface(Typeface.DEFAULT_BOLD);
-        ll.addView(textView)
+        linearLayout.addView(textView)
         val textInputLayout = TextInputLayout(
             ContextThemeWrapper(
                 ll.context,
@@ -177,33 +189,34 @@ class HistorialFamiliar2 : AppCompatActivity() {
         if(!previo)
             familiarOtroCancerLista.add(familiarOtroCancer)
 
-        val botonM = MaterialButton(ll.context)
+        val botonM = MaterialButton(linearLayout.context, null, R.attr.borderlessButtonStyle)
         val clpTextInputLayout3 = ConstraintLayout.LayoutParams(
             ConstraintLayout.LayoutParams.WRAP_CONTENT,
             ConstraintLayout.LayoutParams.WRAP_CONTENT
         )
+        clpTextInputLayout3.width = 60
+        clpTextInputLayout3.leftMargin = 25
+        AppCompatResources.getDrawable(this,R.drawable.baseline_delete_24)?.let {
+            DrawableCompat.setTint(
+                it, Color.parseColor("#036262"))
+        };
 
-        clpTextInputLayout3.bottomMargin = 100
+        botonM.setCompoundDrawablesWithIntrinsicBounds(R.drawable.baseline_delete_24, 0, 0, 0);
         botonM.setLayoutParams(clpTextInputLayout3)
         botonM.cornerRadius = 60
-        botonM.setBackgroundColor(parseColor("#036262"))
-        botonM.height=150
-        botonM.text = "Borrar familiar"
-        botonM.isAllCaps=false
+        botonM.setPadding(0,0,1,0)
+        botonM.setBackgroundColor(Color.parseColor("#FFFFFF"))
         listaBotones.add(listaBotones.size,botonM)
         botonM.setOnClickListener {
             familiarOtroCancerLista.remove(familiarOtroCancer)
             println(familiarOtroCancerLista)
             ll.removeView(textInputLayout2)
             listaBotones.remove(botonM)
-            ll.removeView(textView)
             ll.removeView(textInputLayout)
-            ll.removeView(botonM)
+            ll.removeView(linearLayout)
 
         }
-        ll.addView(botonM)
+        linearLayout.addView(botonM)
     }
-
-
-
+    override fun onBackPressed() {}
 }

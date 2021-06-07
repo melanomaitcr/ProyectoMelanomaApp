@@ -19,6 +19,7 @@ class HistorialPersonalCita {
     var consume_bebidas_alcoholicas_total_otro = ""
 
     fun retornarHistorialPersonalCita(): String {
+        imc = imc.replace(",",".")
         var texto= "{id_cita: \"$id_cita\", rellenado_por_paciente: \"$rellenado_por_paciente\", "
         if (peso_kg.isNotEmpty())
             texto+= "peso_kg: $peso_kg, "
@@ -78,7 +79,7 @@ class HistorialPersonalCita {
             texto+= "consume_bebidas_alcoholicas: \"\", "
 
         if (consume_bebidas_alcoholicas_total.isNotEmpty())
-            texto+= "consume_bebidas_alcoholicas_total: \"$consume_bebidas_alcoholicas\", "
+            texto+= "consume_bebidas_alcoholicas_total: \"$consume_bebidas_alcoholicas_total\", "
         else
             texto+= "consume_bebidas_alcoholicas_total: \"\", "
 

@@ -33,7 +33,7 @@
         android:layout_marginLeft="35dp"
         android:layout_marginRight="35dp"
         android:progress="70"
-        app:indicatorColor="#4BD2D2"
+        app:indicatorColor="#036262"
         android:scaleY="2"
         android:layout_marginTop="63dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,7 +45,7 @@
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="match_parent"
         android:layout_height="53dp"
-        android:textColor="#036262"
+        android:textColor="#054141"
         android:id="@+id/tituloHistorialFamiliar"
         android:gravity="center_horizontal"
         android:text="Historial Familiar"

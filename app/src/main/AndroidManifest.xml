@@ -11,31 +11,42 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoMelanoma">
-        <activity android:name=".BienvenidaSistema">
+        <activity android:name=".BienvenidaSistema"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FinalizacionCita" />
-        <activity android:name=".Archivos" />
-        <activity android:name=".HistorialFamiliar2" />
-        <activity android:name=".HistorialFamiliar1" />
-        <activity android:name=".HistorialPersonal3" />
-        <activity android:name=".HistorialPersonal2" />
-        <activity android:name=".HistorialPersonal1" />
-        <activity android:name=".Domicilio" />
-        <activity android:name=".InformacionContacto" />
-        <activity android:name=".InformacionPersonal" />
-        <activity android:name=".BienvenidaCita" />
+        <activity android:name=".FinalizacionCita"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Archivos"
+            android:screenOrientation="portrait" />
+        <activity android:name=".HistorialFamiliar2"
+            android:screenOrientation="portrait" />
+        <activity android:name=".HistorialFamiliar1"
+            android:screenOrientation="portrait" />
+        <activity android:name=".HistorialPersonal3"
+            android:screenOrientation="portrait" />
+        <activity android:name=".HistorialPersonal2"
+            android:screenOrientation="portrait" />
+        <activity android:name=".HistorialPersonal1"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Domicilio"
+            android:screenOrientation="portrait" />
+        <activity android:name=".InformacionContacto"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".InformacionPersonal"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".BienvenidaCita"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".CitaPaciente"
             android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait">
-
         </activity>
     </application>
 

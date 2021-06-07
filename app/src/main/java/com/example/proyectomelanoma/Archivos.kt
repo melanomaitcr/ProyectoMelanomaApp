@@ -408,4 +408,5 @@ class Archivos : AppCompatActivity() {
             }
         }
     }
+    override fun onBackPressed() {}
 }

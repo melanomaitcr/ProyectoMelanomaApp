@@ -22,7 +22,7 @@
 
         android:text="Formulario previamente rellenado"
         android:textAlignment="center"
-        android:textColor="#036262"
+        android:textColor="#054141"
         android:textSize="30sp" />
 
     <androidx.appcompat.widget.AppCompatTextView

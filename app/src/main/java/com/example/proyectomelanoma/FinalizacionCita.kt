@@ -15,4 +15,5 @@ class FinalizacionCita : AppCompatActivity() {
             startActivity(intent)
         }
     }
+    override fun onBackPressed() {}
 }

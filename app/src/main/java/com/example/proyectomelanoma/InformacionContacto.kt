@@ -28,4 +28,5 @@ class InformacionContacto : AppCompatActivity() {
             startActivity(intent)
         }
     }
+    override fun onBackPressed() {}
 }

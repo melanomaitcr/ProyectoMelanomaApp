@@ -42,6 +42,7 @@ var archivoCitaLista = mutableListOf<ArchivoCita>()
 var cita = Cita()
 var requestQueue:RequestQueue = RequestQueue(null, null)
 class MainActivity : AppCompatActivity() {
+    override fun onBackPressed() {}
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {

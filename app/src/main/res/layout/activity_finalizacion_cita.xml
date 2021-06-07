@@ -17,7 +17,7 @@
         android:text="¡Has finalizado\n con éxito!"
         android:textAlignment="center"
         android:textSize="80px"
-        android:textColor="#036262"
+        android:textColor="#054141"
         android:textStyle="bold"
 
         app:layout_constraintBottom_toBottomOf="parent"
@@ -29,7 +29,9 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="280dp"
+        android:layout_width="match_parent"
+        android:layout_marginRight="35dp"
+        android:layout_marginLeft="35dp"
         android:layout_height="141dp"
         android:contentDescription='"Logo de la aplicación"'
         app:layout_constraintBottom_toBottomOf="parent"

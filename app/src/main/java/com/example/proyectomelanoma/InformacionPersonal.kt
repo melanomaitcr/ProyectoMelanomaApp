@@ -1,8 +1,8 @@
 package com.example.proyectomelanoma
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 
@@ -28,4 +28,5 @@ class InformacionPersonal : AppCompatActivity() {
         }
 
     }
+    override fun onBackPressed() {}
 }

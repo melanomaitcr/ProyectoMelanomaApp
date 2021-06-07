@@ -133,4 +133,5 @@ class HistorialPersonal1 : AppCompatActivity() {
             }
         }
     }
+    override fun onBackPressed() {}
 }

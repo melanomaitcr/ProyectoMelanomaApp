@@ -15,4 +15,5 @@ class BienvenidaCita : AppCompatActivity() {
             startActivity(intent)
         }
     }
+    override fun onBackPressed() {}
 }

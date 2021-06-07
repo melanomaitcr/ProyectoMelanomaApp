@@ -7,40 +7,60 @@
     tools:context=".BienvenidaSistema">
 
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/materialTextView3"
+    <ImageView
+        android:id="@+id/imageView3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
+        android:layout_height="141dp"
         android:layout_marginLeft="35dp"
         android:layout_marginRight="35dp"
-        android:text="Bienvenido al Sistema Prodermis"
-        android:textAlignment="center"
-        android:textColor="#036262"
-        android:textSize="80px"
-        android:textStyle="bold"
+        android:contentDescription='"Logo de la aplicación"'
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.541"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/prodermis" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="278.733031674dp"
+        android:layout_height="200dp"
+        android:contentDescription='"Logo de la aplicación"'
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/mancha_superior" />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="221.621621622dp"
+        android:layout_height="200dp"
+        android:contentDescription='"Logo de la aplicación"'
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.316"
-        android:layout_marginStart="35dp"
-        android:layout_marginEnd="35dp"/>
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/mancha_inferior" />
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintHeight_percent="0.15"
-        app:layout_constraintWidth_percent="0.75"
-        android:contentDescription='"Logo de la aplicación"'
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.534"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.633"
-        app:srcCompat="@drawable/prodermis" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="411dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.303" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
